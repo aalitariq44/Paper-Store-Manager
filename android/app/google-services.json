@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "875558433075",
+    "project_id": "paper-69651",
+    "storage_bucket": "paper-69651.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875558433075:android:91bb2f18d86fee573e8e46",
+        "android_client_info": {
+          "package_name": "com.example.paper_store_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG46VHmt4ZeS1T-83IxqvdErTZMGVawBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
