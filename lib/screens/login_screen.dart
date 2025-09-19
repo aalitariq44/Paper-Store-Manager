@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../services/firebase_service.dart';
 import 'categories_screen.dart';
 import 'initial_setup_screen.dart';
 
@@ -13,7 +12,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
-  final FirebaseService _firebaseService = FirebaseService();
   bool _isLoading = false;
   bool _obscureText = true;
 
@@ -24,33 +22,20 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    String password = _passwordController.text.trim();
-
-    if (password.isEmpty) {
-      _showErrorMessage('يرجى إدخال كلمة المرور');
-      return;
-    }
-
     setState(() {
       _isLoading = true;
     });
 
     try {
-      bool isValidPassword = await _firebaseService.checkPassword(password);
+      // Skip password check and directly save login status
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
 
-      if (isValidPassword) {
-        // Save login status
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('isLoggedIn', true);
-
-        // Navigate to Categories Screen
-        if (mounted) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const CategoriesScreen()),
-          );
-        }
-      } else {
-        _showErrorMessage('كلمة المرور غير صحيحة');
+      // Navigate to Categories Screen
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const CategoriesScreen()),
+        );
       }
     } catch (e) {
       _showErrorMessage('حدث خطأ أثناء تسجيل الدخول');
