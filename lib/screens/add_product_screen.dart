@@ -259,7 +259,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 controller: _priceController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'سعر المنتج (ر.س) *',
+                  labelText: 'سعر المنتج (د.ع) *',
                   prefixIcon: const Icon(Icons.attach_money),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

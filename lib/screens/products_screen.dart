@@ -207,7 +207,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           const SizedBox(height: 8),
 
                           Text(
-                            '${product.price.toStringAsFixed(2)} ر.س',
+                            '${product.price.toStringAsFixed(2)} د.ع',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
