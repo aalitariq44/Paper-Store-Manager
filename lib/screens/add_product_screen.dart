@@ -110,11 +110,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
       return;
     }
 
-    if (_selectedImage == null) {
-      _showMessage('يرجى اختيار صورة للمنتج');
-      return;
-    }
-
     setState(() {
       _isLoading = true;
     });
@@ -125,7 +120,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         price: double.parse(_priceController.text.trim()),
         description: _descriptionController.text.trim(),
         categoryId: widget.category.id,
-        imageFile: _selectedImage!,
+        imageFile: _selectedImage,
       );
 
       if (result != null) {

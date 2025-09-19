@@ -109,13 +109,18 @@ class FirebaseService {
     required double price,
     required String description,
     required String categoryId,
-    required File imageFile,
+    File? imageFile,
   }) async {
     try {
-      // Upload image first
-      String? imageUrl = await uploadImage(imageFile);
-      if (imageUrl == null) {
-        return null;
+      // Upload image if provided
+      String? imageUrl;
+      if (imageFile != null) {
+        imageUrl = await uploadImage(imageFile);
+        if (imageUrl == null) {
+          return null;
+        }
+      } else {
+        imageUrl = '';
       }
 
       DocumentReference docRef = await _productsCollection.add({
